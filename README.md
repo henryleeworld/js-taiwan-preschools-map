@@ -11,8 +11,8 @@ $ git clone
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/jgkQkDP.png)
+![](https://i.imgur.com/6BCOewp.png)
 > 每年五月抽公幼籤，家長搶破頭讓小朋友進公幼的新聞搶盡新聞版面。但事實上，台灣學齡前兒童就讀幼兒園的比率，卻遠低於日韓等先進國家
 
-![](https://i.imgur.com/RZ9mq80.png)
+![](https://i.imgur.com/hDau3l6.png)
 > 在國民義務教育之前，幼兒園教育可以培養學童人際交流能力，提早為團體生活做準備。白天由幼兒園照顧小朋友，父母也更能放心上班
