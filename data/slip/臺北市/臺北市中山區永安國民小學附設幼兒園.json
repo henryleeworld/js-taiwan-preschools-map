@@ -9,19 +9,19 @@
         "town": "中山區",
         "type": "公立",
         "address": "[104]明水路397巷19弄1號",
-        "floor": "1樓",
-        "size": "1,951.57平方公尺",
-        "size_in": "895.57平方公尺",
-        "size_out": "1,056平方公尺",
+        "floor": "",
+        "size": "",
+        "size_in": "",
+        "size_out": "",
         "tel": "(02)25335672#270",
         "url": "www.yaes.tp.edu.tw",
         "count_approved": "150",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

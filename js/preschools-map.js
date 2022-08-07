@@ -10,6 +10,7 @@ var size = ol.extent.getWidth(projectionExtent) / 256;
 var resolutions = new Array(20);
 var matrixIds = new Array(20);
 for (var z = 0; z < 20; ++z) {
+    // generate resolutions and matrixIds arrays for this WMTS
     resolutions[z] = size / Math.pow(2, z);
     matrixIds[z] = z;
 }
@@ -17,11 +18,10 @@ for (var z = 0; z < 20; ++z) {
 var cityList = {};
 var filterCity = '',
     filterTown = '';
-var filterExtent = false;
 
 function pointStyleFunction(f) {
     var p = f.getProperties(),
-        color, stroke, radius;
+        color, stroke, radius, fPoints = 3;
     if (filterCity !== '' && p.city !== filterCity) {
         return null;
     }
@@ -30,10 +30,11 @@ function pointStyleFunction(f) {
     }
     if (f === currentFeature) {
         stroke = new ol.style.Stroke({
-            color: '#000',
-            width: 5
+            color: 'rgba(255,0,255,0.5)',
+            width: 10
         });
-        radius = 25;
+        radius = 35;
+        fPoints = 5;
     } else {
         if (p.penalty === '有') {
             stroke = new ol.style.Stroke({
@@ -67,7 +68,7 @@ function pointStyleFunction(f) {
     let pointStyle = new ol.style.Style({
         image: new ol.style.RegularShape({
             radius: radius,
-            points: 3,
+            points: fPoints,
             fill: new ol.style.Fill({
                 color: color
             }),
@@ -80,13 +81,14 @@ function pointStyleFunction(f) {
             })
         })
     });
-    pointStyle.getText().setText(p.monthly.toString());
+    pointStyle.getText().setText('$' + p.monthly.toString() + '/月');
     return pointStyle;
 }
 var sidebarTitle = document.getElementById('sidebarTitle');
 var content = document.getElementById('infoBox');
 var slip = document.getElementById('slipBox');
 var slip109 = document.getElementById('slipBox109');
+var slip110 = document.getElementById('slipBox110');
 
 var appView = new ol.View({
     center: ol.proj.fromLonLat([120.221507, 23.000694]),
@@ -94,57 +96,9 @@ var appView = new ol.View({
 });
 
 var vectorSource = new ol.source.Vector({
-    url: 'data/collection.json',
     format: new ol.format.GeoJSON({
         featureProjection: appView.getProjection()
     })
-});
-var cityOptionDone = false;
-vectorSource.on('change', function() {
-    if (vectorSource.getState() == 'ready') {
-        vectorSource.forEachFeature(function(f) {
-            var p = f.getProperties();
-            if (false === cityOptionDone) {
-                if (!cityList[p.city]) {
-                    cityList[p.city] = {};
-                }
-                if (!cityList[p.city][p.town]) {
-                    cityList[p.city][p.town] = 0;
-                }
-                ++cityList[p.city][p.town];
-            }
-            if (filterTown !== '') {
-                if (p.city === filterCity && p.town === filterTown) {
-                    if (false === filterExtent) {
-                        filterExtent = f.getGeometry().getExtent();
-                    } else {
-                        ol.extent.extend(filterExtent, f.getGeometry().getExtent());
-                    }
-                }
-            } else if (filterCity !== '') {
-                if (p.city === filterCity) {
-                    if (false === filterExtent) {
-                        filterExtent = f.getGeometry().getExtent();
-                    } else {
-                        ol.extent.extend(filterExtent, f.getGeometry().getExtent());
-                    }
-                }
-            }
-
-        });
-        if (false === cityOptionDone) {
-            cityOptionDone = true;
-            var cityOptions = '<option value="">--</option>';
-            for (city in cityList) {
-                cityOptions += '<option>' + city + '</option>';
-            }
-            $('select#city').html(cityOptions);
-        }
-        if (false !== filterExtent) {
-            map.getView().fit(filterExtent);
-            filterExtent = false;
-        }
-    }
 });
 
 $('select#city').change(function() {
@@ -157,12 +111,10 @@ $('select#city').change(function() {
     }
     $('select#town').html(townOptions);
     filterTown = '';
-    filterExtent = false;
     vectorSource.refresh();
 });
 $('select#town').change(function() {
     filterTown = $(this).val();
-    filterExtent = false;
     vectorSource.refresh();
 });
 
@@ -203,169 +155,11 @@ map.on('singleclick', function(evt) {
     map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
         if (false === pointClicked) {
             var p = feature.getProperties();
-            var lonLat = ol.proj.toLonLat(p.geometry.getCoordinates());
+            var targetHash = '#' + p.id;
+            if (window.location.hash !== targetHash) {
+                window.location.hash = targetHash;
+            }
             pointClicked = true;
-
-            var message = '<table class="table table-dark">';
-            message += '<tbody>';
-            message += '<tr><th scope="row" style="width: 100px;">名稱</th><td>' + p.title + '</td></tr>';
-            if (p.owner) {
-                message += '<tr><th scope="row">負責人</th><td>' + p.owner + '</td></tr>';
-            }
-            message += '<tr><th scope="row">電話</th><td>' + p.tel + '</td></tr>';
-            message += '<tr><th scope="row">住址</th><td>' + p.city + p.town + p.address + '</td></tr>';
-            message += '<tr><th scope="row">類型</th><td>' + p.type + '</td></tr>';
-            message += '<tr><th scope="row">核定人數</th><td>' + p.count_approved + '</td></tr>';
-            if (p.size) {
-                message += '<tr><th scope="row">全園總面積</th><td>' + p.size + '</td></tr>';
-                message += '<tr><th scope="row">室內總面積</th><td>' + p.size_in + '</td></tr>';
-                message += '<tr><th scope="row">室外活動空間總面積</th><td>' + p.size_out + '</td></tr>';
-                message += '<tr><th scope="row">使用樓層</th><td>' + p.floor + '</td></tr>';
-                message += '<tr><th scope="row">幼童專用車</th><td>' + p.shuttle + '</td></tr>';
-                message += '<tr><th scope="row">核准設立日期</th><td>' + p.reg_date + '</td></tr>';
-                message += '<tr><th scope="row">設立許可證號</th><td>' + p.reg_no + '</td></tr>';
-                message += '<tr><th scope="row">設立許可文號</th><td>' + p.reg_docno + '</td></tr>';
-            }
-            message += '<tr><th scope="row">五歲免費</th><td>' + p.is_free5 + '</td></tr>';
-            message += '<tr><th scope="row">準公共化</th><td>' + p.pre_public + '</td></tr>';
-            if (p.url !== '') {
-                message += '<tr><th scope="row">網址</th><td><a href="' + p.url + '" target="_blank">' + p.url + '</a></td></tr>';
-            }
-            message += '<tr><th scope="row">兼辦國小課後照顧</th><td>' + p.is_after + '</td></tr>';
-            message += '<tr><th scope="row">裁罰記錄</th><td>' + p.penalty + '</td></tr>';
-            message += '<tr><td colspan="2">';
-            message += '<hr /><div class="btn-group-vertical" role="group" style="width: 100%;">';
-            message += '<a href="https://www.google.com/maps/dir/?api=1&destination=' + lonLat[1] + ',' + lonLat[0] + '&travelmode=driving" target="_blank" class="btn btn-info btn-lg btn-block">Google 導航</a>';
-            message += '<a href="https://wego.here.com/directions/drive/mylocation/' + lonLat[1] + ',' + lonLat[0] + '" target="_blank" class="btn btn-info btn-lg btn-block">Here WeGo 導航</a>';
-            message += '<a href="https://bing.com/maps/default.aspx?rtp=~pos.' + lonLat[1] + '_' + lonLat[0] + '" target="_blank" class="btn btn-info btn-lg btn-block">Bing 導航</a>';
-            message += '</div></td></tr>';
-            message += '</tbody></table>';
-            sidebarTitle.innerHTML = p.title;
-            content.innerHTML = message;
-
-            if (p.penalty === '有') {
-                $.getJSON('data/punish/' + p.city + '/' + p.title + '.json', {}, function(r) {
-                    var message = '';
-                    for (let line of r) {
-                        message += '<table class="table table-dark"><tbody>';
-                        message += '<tr><td>' + line[0] + '</td></tr>';
-                        message += '<tr><td>' + line[1] + '</td></tr>';
-                        message += '<tr><td>' + line[2] + '</td></tr>';
-                        message += '<tr><td>' + line[3] + '</td></tr>';
-                        message += '<tr><td>' + line[4] + '</td></tr>';
-                        message += '<tr><td>' + line[5] + '</td></tr>';
-                        message += '</tbody></table>';
-                    }
-                    $('#punishmentBox').html(message);
-                });
-                $('#punishmentItem').show();
-            } else {
-                $('#punishmentBox').html('');
-                $('#punishmentItem').hide();
-            }
-
-            $('#accordion110').hide();
-            $.getJSON('data/slip/' + p.city + '/' + p.title + '.json', {}, function(r) {
-                var message = '<table class="table table-dark">';
-                message += '<tbody>';
-                let slipKeys = ['學費', '雜費', '材料費', '活動費', '午餐費', '點心費', '全學期總收費', '交通費', '課後延托費', '家長會費'];
-                for (y in r.slip) {
-                    for (p in r.slip[y]) {
-                        message += '<tr><td colspan="2">';
-                        message += y + '歲 - ' + p + ' / ' + r.slip[y][p].months + '個月';
-                        message += '</td></tr>';
-                        let blockToShow = false;
-                        for (let slipKey of slipKeys) {
-                            if (r.slip[y][p].class['全日班'][slipKey] && r.slip[y][p].class['全日班'][slipKey]['單價'] != '') {
-                                blockToShow = true;
-                            }
-                        }
-                        if (blockToShow) {
-                            message += '<tr><td colspan="2" style="text-align:right;">全日班</td></tr>';
-                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
-                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
-                            for (let slipKey of slipKeys) {
-                                if (r.slip[y][p].class['全日班'][slipKey]) {
-                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['小計'] + '</td></tr>';
-                                }
-                            }
-                            message += '</table></td></tr>';
-                        }
-                        blockToShow = false;
-                        for (let slipKey of slipKeys) {
-                            if (r.slip[y][p].class['半日班'][slipKey] && r.slip[y][p].class['半日班'][slipKey]['單價'] != '') {
-                                blockToShow = true;
-                            }
-                        }
-                        if (blockToShow) {
-                            message += '<tr><td colspan="2" style="text-align:right;">半日班</td></tr>';
-                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
-                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
-                            for (let slipKey of slipKeys) {
-                                if (r.slip[y][p].class['半日班'][slipKey]) {
-                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['小計'] + '</td></tr>';
-                                }
-                            }
-                            message += '</table></td></tr>';
-                        }
-                    }
-                }
-                message += '</tbody></table>';
-                slip.innerHTML = message;
-                $('#accordion110').show();
-            });
-
-            $('#accordion109').hide();
-            $.getJSON('data/slip109/' + p.city + '/' + p.title + '.json', {}, function(r) {
-                var message = '<table class="table table-dark">';
-                message += '<tbody>';
-                let slipKeys = ['學費', '雜費', '材料費', '活動費', '午餐費', '點心費', '全學期總收費', '交通費', '課後延托費', '家長會費'];
-                for (y in r.slip) {
-                    for (p in r.slip[y]) {
-                        message += '<tr><td colspan="2">';
-                        message += y + '歲 - ' + p + ' / ' + r.slip[y][p].months + '個月';
-                        message += '</td></tr>';
-                        let blockToShow = false;
-                        for (let slipKey of slipKeys) {
-                            if (r.slip[y][p].class['全日班'][slipKey] && r.slip[y][p].class['全日班'][slipKey]['單價'] != '') {
-                                blockToShow = true;
-                            }
-                        }
-                        if (blockToShow) {
-                            message += '<tr><td colspan="2" style="text-align:right;">全日班</td></tr>';
-                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
-                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
-                            for (let slipKey of slipKeys) {
-                                if (r.slip[y][p].class['全日班'][slipKey]) {
-                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['小計'] + '</td></tr>';
-                                }
-                            }
-                            message += '</table></td></tr>';
-                        }
-                        blockToShow = false;
-                        for (let slipKey of slipKeys) {
-                            if (r.slip[y][p].class['半日班'][slipKey] && r.slip[y][p].class['半日班'][slipKey]['單價'] != '') {
-                                blockToShow = true;
-                            }
-                        }
-                        if (blockToShow) {
-                            message += '<tr><td colspan="2" style="text-align:right;">半日班</td></tr>';
-                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
-                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
-                            for (let slipKey of slipKeys) {
-                                if (r.slip[y][p].class['半日班'][slipKey]) {
-                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['小計'] + '</td></tr>';
-                                }
-                            }
-                            message += '</table></td></tr>';
-                        }
-                    }
-                }
-                message += '</tbody></table>';
-                slip109.innerHTML = message;
-                $('#accordion109').show();
-            });
-            sidebar.open('home');
         }
     });
 });
@@ -423,4 +217,292 @@ $('#btn-geolocation').click(function() {
         alert('目前使用的設備無法提供地理資訊');
     }
     return false;
+});
+
+function showPos(lng, lat) {
+    firstPosDone = true;
+    appView.setCenter(ol.proj.fromLonLat([parseFloat(lng), parseFloat(lat)]));
+}
+
+var previousFeature = false;
+var currentFeature = false;
+
+function showPoint(pointId) {
+    firstPosDone = true;
+    $('#findPoint').val('');
+    var features = vectorPoints.getSource().getFeatures();
+    var pointFound = false;
+    for (k in features) {
+        var p = features[k].getProperties();
+        if (p.id === pointId) {
+            currentFeature = features[k];
+            features[k].setStyle(pointStyleFunction(features[k]));
+            if (false !== previousFeature) {
+                previousFeature.setStyle(pointStyleFunction(previousFeature));
+            }
+            previousFeature = currentFeature;
+            appView.setCenter(features[k].getGeometry().getCoordinates());
+            appView.setZoom(15);
+            var lonLat = ol.proj.toLonLat(p.geometry.getCoordinates());
+            var message = '<table class="table table-dark">';
+            message += '<tbody>';
+            message += '<tr><th scope="row" style="width: 100px;">名稱</th><td>' + p.title + '</td></tr>';
+            if (p.owner) {
+                message += '<tr><th scope="row">負責人</th><td>' + p.owner + '</td></tr>';
+            }
+            message += '<tr><th scope="row">電話</th><td>' + p.tel + '</td></tr>';
+            message += '<tr><th scope="row">住址</th><td>' + p.city + p.town + p.address + '</td></tr>';
+            if (p.type === '私立' && p.pre_public !== '無') {
+                message += '<tr><th scope="row">類型</th><td>' + p.type + '(準公共化)</td></tr>';
+            } else {
+                message += '<tr><th scope="row">類型</th><td>' + p.type + '</td></tr>';
+            }
+            message += '<tr><th scope="row">核定人數</th><td>' + p.count_approved + '</td></tr>';
+            if (p.size) {
+                message += '<tr><th scope="row">全園總面積</th><td>' + p.size + '</td></tr>';
+                message += '<tr><th scope="row">室內總面積</th><td>' + p.size_in + '</td></tr>';
+                message += '<tr><th scope="row">室外活動空間總面積</th><td>' + p.size_out + '</td></tr>';
+                message += '<tr><th scope="row">使用樓層</th><td>' + p.floor + '</td></tr>';
+                message += '<tr><th scope="row">幼童專用車</th><td>' + p.shuttle + '</td></tr>';
+                message += '<tr><th scope="row">核准設立日期</th><td>' + p.reg_date + '</td></tr>';
+                message += '<tr><th scope="row">設立許可證號</th><td>' + p.reg_no + '</td></tr>';
+                message += '<tr><th scope="row">設立許可文號</th><td>' + p.reg_docno + '</td></tr>';
+            }
+            message += '<tr><th scope="row">五歲免費</th><td>' + p.is_free5 + '</td></tr>';
+            message += '<tr><th scope="row">準公共化</th><td>' + p.pre_public + '</td></tr>';
+            if (p.url !== '') {
+                message += '<tr><th scope="row">網址</th><td><a href="' + p.url + '" target="_blank">' + p.url + '</a></td></tr>';
+            }
+            message += '<tr><th scope="row">兼辦國小課後照顧</th><td>' + p.is_after + '</td></tr>';
+            message += '<tr><th scope="row">裁罰記錄</th><td>' + p.penalty + '</td></tr>';
+            message += '<tr><td colspan="2">';
+            message += '<hr /><div class="btn-group-vertical" role="group" style="width: 100%;">';
+            message += '<a href="https://www.google.com/maps/dir/?api=1&destination=' + lonLat[1] + ',' + lonLat[0] + '&travelmode=driving" target="_blank" class="btn btn-info btn-lg btn-block">Google 導航</a>';
+            message += '<a href="https://wego.here.com/directions/drive/mylocation/' + lonLat[1] + ',' + lonLat[0] + '" target="_blank" class="btn btn-info btn-lg btn-block">Here WeGo 導航</a>';
+            message += '<a href="https://bing.com/maps/default.aspx?rtp=~pos.' + lonLat[1] + '_' + lonLat[0] + '" target="_blank" class="btn btn-info btn-lg btn-block">Bing 導航</a>';
+            message += '</div></td></tr>';
+            message += '</tbody></table>';
+            sidebarTitle.innerHTML = p.title;
+            content.innerHTML = message;
+
+            if (p.penalty === '有') {
+                $.getJSON('data/punish/' + p.city + '/' + p.title + '.json', {}, function(r) {
+                    var message = '';
+                    for (let line of r) {
+                        message += '<table class="table table-dark"><tbody>';
+                        message += '<tr><td>' + line[0] + '</td></tr>';
+                        message += '<tr><td>' + line[1] + '</td></tr>';
+                        message += '<tr><td>' + line[2] + '</td></tr>';
+                        message += '<tr><td>' + line[3] + '</td></tr>';
+                        message += '<tr><td>' + line[4] + '</td></tr>';
+                        message += '<tr><td>' + line[5] + '</td></tr>';
+                        message += '</tbody></table>';
+                    }
+                    $('#punishmentBox').html(message);
+                });
+                $('#punishmentItem').show();
+            } else {
+                $('#punishmentBox').html('');
+                $('#punishmentItem').hide();
+            }
+
+            $('#accordion111').hide();
+            $.getJSON('data/slip/' + p.city + '/' + p.title + '.json', {}, function(r) {
+                var message = '<table class="table table-dark">';
+                message += '<tbody>';
+                let slipKeys = ['學費', '雜費', '材料費', '活動費', '午餐費', '點心費', '全學期總收費', '交通費', '課後延托費', '家長會費'];
+                for (y in r.slip) {
+                    for (p in r.slip[y]) {
+                        message += '<tr><td colspan="2">';
+                        message += y + '歲 - ' + p + ' / ' + r.slip[y][p].months + '個月';
+                        message += '</td></tr>';
+                        let blockToShow = false;
+                        for (let slipKey of slipKeys) {
+                            if (r.slip[y][p].class['全日班'][slipKey] && r.slip[y][p].class['全日班'][slipKey]['單價'] != '') {
+                                blockToShow = true;
+                            }
+                        }
+                        if (blockToShow) {
+                            message += '<tr><td colspan="2" style="text-align:right;">全日班</td></tr>';
+                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
+                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
+                            for (let slipKey of slipKeys) {
+                                if (r.slip[y][p].class['全日班'][slipKey]) {
+                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['小計'] + '</td></tr>';
+                                }
+                            }
+                            message += '</table></td></tr>';
+                        }
+                        blockToShow = false;
+                        for (let slipKey of slipKeys) {
+                            if (r.slip[y][p].class['半日班'][slipKey] && r.slip[y][p].class['半日班'][slipKey]['單價'] != '') {
+                                blockToShow = true;
+                            }
+                        }
+                        if (blockToShow) {
+                            message += '<tr><td colspan="2" style="text-align:right;">半日班</td></tr>';
+                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
+                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
+                            for (let slipKey of slipKeys) {
+                                if (r.slip[y][p].class['半日班'][slipKey]) {
+                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['小計'] + '</td></tr>';
+                                }
+                            }
+                            message += '</table></td></tr>';
+                        }
+                    }
+                }
+                message += '</tbody></table>';
+                slip.innerHTML = message;
+                $('#accordion111').show();
+            });
+
+            $('#accordion110').hide();
+            $.getJSON('data/slip110/' + p.city + '/' + p.title + '.json', {}, function(r) {
+                var message = '<table class="table table-dark">';
+                message += '<tbody>';
+                let slipKeys = ['學費', '雜費', '材料費', '活動費', '午餐費', '點心費', '全學期總收費', '交通費', '課後延托費', '家長會費'];
+                for (y in r.slip) {
+                    for (p in r.slip[y]) {
+                        message += '<tr><td colspan="2">';
+                        message += y + '歲 - ' + p + ' / ' + r.slip[y][p].months + '個月';
+                        message += '</td></tr>';
+                        let blockToShow = false;
+                        for (let slipKey of slipKeys) {
+                            if (r.slip[y][p].class['全日班'][slipKey] && r.slip[y][p].class['全日班'][slipKey]['單價'] != '') {
+                                blockToShow = true;
+                            }
+                        }
+                        if (blockToShow) {
+                            message += '<tr><td colspan="2" style="text-align:right;">全日班</td></tr>';
+                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
+                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
+                            for (let slipKey of slipKeys) {
+                                if (r.slip[y][p].class['全日班'][slipKey]) {
+                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['小計'] + '</td></tr>';
+                                }
+                            }
+                            message += '</table></td></tr>';
+                        }
+                        blockToShow = false;
+                        for (let slipKey of slipKeys) {
+                            if (r.slip[y][p].class['半日班'][slipKey] && r.slip[y][p].class['半日班'][slipKey]['單價'] != '') {
+                                blockToShow = true;
+                            }
+                        }
+                        if (blockToShow) {
+                            message += '<tr><td colspan="2" style="text-align:right;">半日班</td></tr>';
+                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
+                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
+                            for (let slipKey of slipKeys) {
+                                if (r.slip[y][p].class['半日班'][slipKey]) {
+                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['小計'] + '</td></tr>';
+                                }
+                            }
+                            message += '</table></td></tr>';
+                        }
+                    }
+                }
+                message += '</tbody></table>';
+                slip110.innerHTML = message;
+                $('#accordion110').show();
+            });
+
+            $('#accordion109').hide();
+            $.getJSON('data/slip109/' + p.city + '/' + p.title + '.json', {}, function(r) {
+                var message = '<table class="table table-dark">';
+                message += '<tbody>';
+                let slipKeys = ['學費', '雜費', '材料費', '活動費', '午餐費', '點心費', '全學期總收費', '交通費', '課後延托費', '家長會費'];
+                for (y in r.slip) {
+                    for (p in r.slip[y]) {
+                        message += '<tr><td colspan="2">';
+                        message += y + '歲 - ' + p + ' / ' + r.slip[y][p].months + '個月';
+                        message += '</td></tr>';
+                        let blockToShow = false;
+                        for (let slipKey of slipKeys) {
+                            if (r.slip[y][p].class['全日班'][slipKey] && r.slip[y][p].class['全日班'][slipKey]['單價'] != '') {
+                                blockToShow = true;
+                            }
+                        }
+                        if (blockToShow) {
+                            message += '<tr><td colspan="2" style="text-align:right;">全日班</td></tr>';
+                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
+                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
+                            for (let slipKey of slipKeys) {
+                                if (r.slip[y][p].class['全日班'][slipKey]) {
+                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['全日班'][slipKey]['小計'] + '</td></tr>';
+                                }
+                            }
+                            message += '</table></td></tr>';
+                        }
+                        blockToShow = false;
+                        for (let slipKey of slipKeys) {
+                            if (r.slip[y][p].class['半日班'][slipKey] && r.slip[y][p].class['半日班'][slipKey]['單價'] != '') {
+                                blockToShow = true;
+                            }
+                        }
+                        if (blockToShow) {
+                            message += '<tr><td colspan="2" style="text-align:right;">半日班</td></tr>';
+                            message += '<tr><td colspan="2" class="table-responsive"><table class="table-dark" style="width:100%;">'
+                            message += '<tr><th>項目</th><th>收費期間</th><th>單價</th><th>小計</th></tr>';
+                            for (let slipKey of slipKeys) {
+                                if (r.slip[y][p].class['半日班'][slipKey]) {
+                                    message += '<tr><td>' + slipKey + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['收費期間'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['單價'] + '</td><td>' + r.slip[y][p].class['半日班'][slipKey]['小計'] + '</td></tr>';
+                                }
+                            }
+                            message += '</table></td></tr>';
+                        }
+                    }
+                }
+                message += '</tbody></table>';
+                slip109.innerHTML = message;
+                $('#accordion109').show();
+            });
+
+            sidebarTitle.innerHTML = p.title;
+            content.innerHTML = message;
+        }
+    }
+    sidebar.open('home');
+}
+
+var pointsFc;
+var adminTree = {};
+var findTerms = [];
+$.getJSON('data/collection.json', {}, function(c) {
+    pointsFc = c;
+    var vFormat = vectorSource.getFormat();
+    vectorSource.addFeatures(vFormat.readFeatures(pointsFc));
+
+    for (k in pointsFc.features) {
+        var p = pointsFc.features[k].properties;
+        findTerms.push({
+            value: p.id,
+            label: p.title + ' ' + p.address
+        });
+        if (!cityList[p.city]) {
+            cityList[p.city] = {};
+        }
+        if (!cityList[p.city][p.town]) {
+            ++cityList[p.city][p.town];
+        }
+    }
+    var cityOptions = '<option value="">--</option>';
+    for (city in cityList) {
+        cityOptions += '<option>' + city + '</option>';
+    }
+    $('select#city').html(cityOptions);
+
+    routie(':pointId', showPoint);
+    routie('pos/:lng/:lat', showPos);
+
+    $('#findPoint').autocomplete({
+        source: findTerms,
+        select: function(event, ui) {
+            var targetHash = '#' + ui.item.value;
+            if (window.location.hash !== targetHash) {
+                window.location.hash = targetHash;
+            }
+        }
+    });
 });

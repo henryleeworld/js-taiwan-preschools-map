@@ -9,19 +9,19 @@
         "town": "安樂區",
         "type": "公立",
         "address": "[204]武崙街203號",
-        "floor": "1樓",
-        "size": "660平方公尺",
-        "size_in": "360平方公尺",
-        "size_out": "300平方公尺",
+        "floor": "",
+        "size": "",
+        "size_in": "",
+        "size_out": "",
         "tel": "(02)24310018#61",
         "url": "http:\/\/www.wlps.kl.edu.tw\/47",
         "count_approved": "106",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

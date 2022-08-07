@@ -13,15 +13,15 @@
         "size": "483平方公尺",
         "size_in": "240平方公尺",
         "size_out": "243平方公尺",
-        "tel": "(06)2157589#861",
+        "tel": "(06)2157589#862",
         "url": "http:\/\/spc.tn.edu.tw\/k100",
         "count_approved": "60",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

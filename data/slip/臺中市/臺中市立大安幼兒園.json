@@ -9,19 +9,19 @@
         "town": "大安區",
         "type": "公立",
         "address": "[439]褔安路38號",
-        "floor": "1樓、2樓、3樓",
-        "size": "4,393.32平方公尺",
-        "size_in": "2,613.14平方公尺",
-        "size_out": "1,780.18平方公尺",
+        "floor": "",
+        "size": "",
+        "size_in": "",
+        "size_out": "",
         "tel": "(04)26710363",
         "url": "http:\/\/daan.topschool.com.tw\/",
         "count_approved": "240",
         "shuttle": "\t\t",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

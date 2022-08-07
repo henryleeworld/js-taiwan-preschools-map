@@ -9,19 +9,19 @@
         "town": "中壢區",
         "type": "公立",
         "address": "[320]延平路622號",
-        "floor": "1",
-        "size": "1,600平方公尺",
-        "size_in": "880平方公尺",
-        "size_out": "720平方公尺",
+        "floor": "",
+        "size": "",
+        "size_in": "",
+        "size_out": "",
         "tel": "(03)4227376#101",
         "url": "http:\/\/clps.ischool.site\/",
         "count_approved": "120",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

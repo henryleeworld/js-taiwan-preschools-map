@@ -9,19 +9,19 @@
         "town": "北投區",
         "type": "私立",
         "address": "[112]裕民六路114巷36弄5號1樓及7號1樓",
-        "floor": "1樓",
-        "size": "199.86平方公尺",
-        "size_in": "199.86平方公尺",
+        "floor": "",
+        "size": "",
+        "size_in": "",
         "size_out": "",
         "tel": "(02)28218915",
         "url": "grace581218.pixnet.net",
         "count_approved": "40",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

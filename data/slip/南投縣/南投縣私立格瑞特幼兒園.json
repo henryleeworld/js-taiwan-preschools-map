@@ -9,19 +9,19 @@
         "town": "草屯鎮",
         "type": "私立",
         "address": "[542]登輝路336號",
-        "floor": "2",
-        "size": "2,646平方公尺",
-        "size_in": "918平方公尺",
-        "size_out": "1,728平方公尺",
+        "floor": "",
+        "size": "",
+        "size_in": "",
+        "size_out": "",
         "tel": "(049)2562006",
         "url": "",
         "count_approved": "130",
         "shuttle": "\t\t",
         "pre_public": "110-112",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

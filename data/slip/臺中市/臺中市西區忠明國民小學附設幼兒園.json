@@ -14,14 +14,14 @@
         "size_in": "450平方公尺",
         "size_out": "600平方公尺",
         "tel": "(04)23172860#786",
-        "url": "www.zmes.tc.edu.tw",
+        "url": "zmes.tc.edu.tw\/",
         "count_approved": "180",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

@@ -9,19 +9,19 @@
         "town": "沙鹿區",
         "type": "私立",
         "address": "[433]臺灣大道七段466號1~2樓",
-        "floor": "1-2",
-        "size": "706.47平方公尺",
-        "size_in": "329.32平方公尺",
+        "floor": "1樓、2樓",
+        "size": "955.99平方公尺",
+        "size_in": "578.84平方公尺",
         "size_out": "377.15平方公尺",
         "tel": "(04)26656301",
         "url": "",
         "count_approved": "130",
         "shuttle": "\t\t",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

@@ -18,10 +18,10 @@
         "count_approved": "270",
         "shuttle": "\t\t",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "有，人數：45",
         "penalty": "有",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

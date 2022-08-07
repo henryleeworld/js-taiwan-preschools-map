@@ -18,15 +18,15 @@
         "count_approved": "330",
         "shuttle": "\t\t",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {
             "上學期": {
-                "months": "6",
+                "months": "5.5",
                 "class": {
                     "半日班": {
                         "學費": {
@@ -135,7 +135,7 @@
                 }
             },
             "下學期": {
-                "months": "6",
+                "months": "5.5",
                 "class": {
                     "半日班": {
                         "學費": {

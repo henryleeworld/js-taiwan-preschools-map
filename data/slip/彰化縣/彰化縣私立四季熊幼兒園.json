@@ -16,12 +16,12 @@
         "tel": "(04)8339996",
         "url": "fsb20181010@gmail.com",
         "count_approved": "218",
-        "shuttle": "",
+        "shuttle": "\t\t",
         "pre_public": "110-112",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

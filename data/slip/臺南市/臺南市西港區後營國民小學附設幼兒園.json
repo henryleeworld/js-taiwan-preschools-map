@@ -9,19 +9,19 @@
         "town": "西港區",
         "type": "公立",
         "address": "[723]3號",
-        "floor": "1樓",
-        "size": "192平方公尺",
-        "size_in": "120平方公尺",
-        "size_out": "72平方公尺",
+        "floor": "",
+        "size": "",
+        "size_in": "",
+        "size_out": "",
         "tel": "(06)7952131#709",
         "url": "https:\/\/www.hyes.tn.edu.tw\/",
         "count_approved": "30",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {

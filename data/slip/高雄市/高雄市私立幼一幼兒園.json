@@ -18,10 +18,10 @@
         "count_approved": "239",
         "shuttle": "\t\t",
         "pre_public": "110-112",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {
@@ -558,8 +558,8 @@
                         },
                         "交通費": {
                             "收費期間": "單趟\r\n                                                    雙趟",
-                            "單價": "單\r\n\t\t\t\t\t\t\t                600\r\n\t\t\t\t\t\t\t                雙\r\n\t\t\t\t\t\t\t                100",
-                            "小計": "600\r\n\t\t\t\t\t\t\t                100"
+                            "單價": "單\r\n\t\t\t\t\t\t\t                600\r\n\t\t\t\t\t\t\t                雙\r\n\t\t\t\t\t\t\t                1000",
+                            "小計": "600\r\n\t\t\t\t\t\t\t                1000"
                         },
                         "課後延托費": {
                             "收費期間": "月",

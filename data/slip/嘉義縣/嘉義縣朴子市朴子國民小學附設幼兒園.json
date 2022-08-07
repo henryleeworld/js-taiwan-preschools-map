@@ -13,15 +13,15 @@
         "size": "1,062.3平方公尺",
         "size_in": "299.8平方公尺",
         "size_out": "762.5平方公尺",
-        "tel": "(05)3792032#283",
+        "tel": "(05)3792032#123",
         "url": "http:\/\/www.loxa.edu.tw\/classweb.html?teacher=cyc-pt32",
         "count_approved": "60",
         "shuttle": "",
         "pre_public": "無",
-        "is_free5": "(110)",
+        "is_free5": "",
         "is_after": "無",
         "penalty": "無",
-        "has_slip": "no"
+        "has_slip": "yes"
     },
     "slip": {
         "5": {
