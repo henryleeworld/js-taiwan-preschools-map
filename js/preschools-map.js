@@ -91,7 +91,7 @@ var slip109 = document.getElementById('slipBox109');
 var slip110 = document.getElementById('slipBox110');
 
 var appView = new ol.View({
-    center: ol.proj.fromLonLat([120.221507, 23.000694]),
+    center: ol.proj.fromLonLat([121.254840, 24.972320]),
     zoom: 14
 });
 
