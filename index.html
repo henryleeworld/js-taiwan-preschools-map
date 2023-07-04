@@ -8,10 +8,10 @@
         <meta property="og:description" content="台灣的公托與公幼像是兩個世界。尤其是鄉鎮公托，多數甚至未合法立案，硬體、衛生、消防安全都跟不上現代教育服務的需求；教保人員的專業也有限，師資不乏高中學歷的公務人員，在現場，由於不諳教學策略，常常管秩序的時間比教學的時間還多。"/>
         <meta property="og:locale" content="zh_TW" />
         <meta property="og:type" content="website" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.6.5/ol.css" integrity="sha512-D2c/nmSVlwoZk29SLwJK8GkLyCyPuNbZ/vZQL/lNzw+o+yXzsbnJt7lK/iCfdBmgyLRDi0qx27gpE8Zb1C6I7g==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sidebar-v2@0.4.0/css/ol3-sidebar.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <link rel="stylesheet" href="css/preschools-map.css" type="text/css" />
         <title>台灣幼兒園地圖</title>
     </head>
@@ -35,7 +35,9 @@
             </div>
             <div class="sidebar-content">
                 <div class="sidebar-pane" id="home">
-                    <h1 class="sidebar-header"><span id="sidebarTitle">請點選地圖中的點</span><span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                    <h1 class="sidebar-header">
+                        <span id="sidebarTitle">請點選地圖中的點</span><span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                    </h1>
                     <div id="sidebarContent">
                         <div class="accordion" id="accordionMain">
                             <div class="accordion-item">
@@ -48,17 +50,17 @@
                                     <div class="accordion-body" id="infoBox"></div>
                                 </div>
                             </div>
-                            <div class="accordion-item" id="accordion111">
+                            <div class="accordion-item" id="accordion112">
                                 <h2 class="accordion-header" id="heading2">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSlip" aria-expanded="false" aria-controls="collapseSlip">
-                                        111學年度收費
+                                        112學年度收費
                                     </button>
                                 </h2>
                                 <div id="collapseSlip" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionMain">
-                                    <div class="accordion-body" id="slipBox"></div>
+                                    <div class="accordion-body" id="slipBox112"></div>
                                 </div>
                             </div>
-                            <div class="accordion-item" id="punishmentItem" style="display:none;">
+                            <div class="accordion-item" id="punishmentItem" style="display: none;">
                                 <h2 class="accordion-header" id="heading3">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePunishment" aria-expanded="false" aria-controls="collapsePunishment">
                                         裁罰
@@ -68,13 +70,23 @@
                                     <div class="accordion-body" id="punishmentBox"></div>
                                 </div>
                             </div>
+                            <div class="accordion-item" id="accordion111">
+                                <h2 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSlip111" aria-expanded="false" aria-controls="collapseSlip111">
+                                        111學年度收費
+                                    </button>
+                                </h2>
+                                <div id="collapseSlip111" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionMain">
+                                    <div class="accordion-body" id="slipBox111"></div>
+                                </div>
+                            </div>
                             <div class="accordion-item" id="accordion110">
                                 <h2 class="accordion-header" id="heading4">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSlip110" aria-expanded="false" aria-controls="collapseSlip110">
                                         110學年度收費
                                     </button>
                                 </h2>
-                                <div id="collapseSlip110" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionMain">
+                                <div id="collapseSlip110" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionMain">
                                     <div class="accordion-body" id="slipBox110"></div>
                                 </div>
                             </div>
@@ -84,7 +96,7 @@
                                         109學年度收費
                                     </button>
                                 </h2>
-                                <div id="collapseSlip109" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionMain">
+                                <div id="collapseSlip109" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionMain">
                                     <div class="accordion-body" id="slipBox109"></div>
                                 </div>
                             </div>
@@ -95,15 +107,16 @@
                     </div>
                 </div>
                 <div class="sidebar-pane" id="book">
-                    <h1 class="sidebar-header"><span id="weekTitle">說明</span><span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                    <h1 class="sidebar-header">
+                        <span id="weekTitle">說明</span><span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                    </h1>
                     <div>
-                        <p>每個三角形代表一間幼兒園，跟著三角形的數字是該幼兒園的最低每月收費，個別幼兒園可能因為年齡不同而有不同的收費，這個數字只試算最低的那個年齡。三角形的顏色代表幼兒園類型，顏色可以參考下面說明：
-                        </p>
+                        <p>每個三角形代表一間幼兒園，跟著三角形的數字是該幼兒園的最低每月收費，個別幼兒園可能因為年齡不同而有不同的收費，這個數字只試算最低的那個年齡。三角形的顏色代表幼兒園類型，顏色可以參考下面說明：</p>
                         <ul>
-                            <li><span style="color:#48c774">▲</span>：公立</li>
-                            <li><span style="color:#57ffdd">▲</span>：私立</li>
-                            <li><span style="color:#57ddff">▲</span>：準公共化</li>
-                            <li><span style="color:#ffdd57">▲</span>：非營利</li>
+                            <li><span style="color: #48c774;">▲</span>：公立</li>
+                            <li><span style="color: #57ffdd;">▲</span>：準公共化</li>
+                            <li><span style="color: #57ddff;">▲</span>：私立</li>
+                            <li><span style="color: #ffdd57;">▲</span>：非營利</li>
                             <li>紅色外框：有裁罰記錄</li>
                             <li>藍色圓點：你目前所在位置（需要同意網站授權）</li>
                         </ul>
@@ -115,12 +128,15 @@
                         </ul>
                         注意事項：
                         <ul>
+                            <li>試算出來的月收費只是一個參考，因為沒辦法清楚每個縣市是否有延伸自訂的作法</li>
                             <li><a href="https://ap.ece.moe.edu.tw/webecems/pubSearch.aspx" target="_blank">資料來源</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="sidebar-pane" id="settings">
-                    <h1 class="sidebar-header"><span id="weekTitle">設定</span><span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                    <h1 class="sidebar-header">
+                        <span id="weekTitle">設定</span><span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                    </h1>
                     <div>
                         <a href="#" class="btn btn-primary btn-lg btn-block" id="btn-geolocation">回到目前位置</a>
                     </div>
@@ -137,7 +153,7 @@
                         <h5 class="card-title">搜尋</h5>
                         <div class="form-group">
                             <label for="findPoint">名稱或住址</label>
-                            <input type="text" id="findPoint" name="findPoint" class="form-control"></input>
+                            <input type="text" id="findPoint" name="findPoint" class="form-control" />
                         </div>
                     </div>
                 </div>
