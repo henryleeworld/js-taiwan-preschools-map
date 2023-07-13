@@ -283,6 +283,8 @@ function showPoint(pointId) {
             sidebarTitle.innerHTML = p.title;
             content.innerHTML = message;
 
+            $('#punishmentBox').html('');
+            $('#punishmentItem').hide();
             $.getJSON('data/punish/' + p.city + '/' + p.title + '.json', {}, function(r) {
                 var message = '';
                 for (let line of r) {
@@ -301,6 +303,7 @@ function showPoint(pointId) {
 
 
             for (let slipYear of slipYears) {
+                $('#slipBox' + slipYear).html('');
                 $('#accordion' + slipYear).hide();
                 $.getJSON('data/slip' + slipYear + '/' + p.city + '/' + p.title + '.json', {}, function(r) {
                     var message = '<table class="table table-dark">';
