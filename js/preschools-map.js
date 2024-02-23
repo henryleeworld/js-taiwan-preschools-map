@@ -301,6 +301,22 @@ function showPoint(pointId) {
                 $('#punishmentItem').show();
             });
 
+            $('#vehicleBox').html('');
+            $('#vehicleItem').hide();
+            if (vehicles[p.id]) {
+                var vMessage = '';
+                for (let line of vehicles[p.id]) {
+                    // console.log(line);
+                    vMessage += '<table class="table table-dark"><tbody>';
+                    vMessage += '<tr><th>車牌</th><td>' + line.plate_no + '</td></tr>';
+                    vMessage += '<tr><th>出廠年月</th><td>' + line.on_production_date + '</td></tr>';
+                    vMessage += '<tr><th>下次定檢日期</th><td>' + line.next_exam_dt + '</td></tr>';
+                    vMessage += '<tr><th>備註</th><td>' + line.txn_name + '</td></tr>';
+                    vMessage += '</tbody></table>';
+                }
+                $('#vehicleBox').html(vMessage);
+                $('#vehicleItem').show();
+            }
 
             for (let slipYear of slipYears) {
                 $('#slipBox' + slipYear).html('');
@@ -394,6 +410,10 @@ $.getJSON('data/collection.json', {}, function(c) {
     routie('pos/:lng/:lat', showPos);
 
     $('#findPoint').autocomplete({
+        focus: function(event, ui) {
+            $(".ui-helper-hidden-accessible").hide();
+            event.preventDefault();
+        },
         source: findTerms,
         select: function(event, ui) {
             var targetHash = '#' + ui.item.value;
@@ -402,4 +422,9 @@ $.getJSON('data/collection.json', {}, function(c) {
             }
         }
     });
+});
+
+var vehicles = {};
+$.getJSON('data/vehicles.json', {}, function(c) {
+    vehicles = c;
 });
