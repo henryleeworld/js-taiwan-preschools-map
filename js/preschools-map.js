@@ -68,6 +68,7 @@ function pointStyleFunction(f) {
                 break;
         }
     }
+
     let pointStyle = new ol.style.Style({
         image: new ol.style.RegularShape({
             radius: radius,
@@ -226,7 +227,7 @@ function showPos(lng, lat) {
 
 var previousFeature = false;
 var currentFeature = false;
-var slipYears = ['109', '110', '111', '112'];
+var slipYears = ['109', '110', '111', '112', '113'];
 var slipKeys = ['學費', '雜費', '材料費', '活動費', '午餐費', '點心費', '全學期總收費', '交通費', '課後延托費', '家長會費'];
 
 function showPoint(pointId) {
@@ -383,8 +384,10 @@ function showPoint(pointId) {
                     $('#accordion' + slipYear).show();
                 });
             }
+            $('#linkPreschool').attr('href', 'https://preschools.olc.tw/preschools/view/' + pointId).html('詳細資訊');
 
             sidebarTitle.innerHTML = p.title;
+            document.title = p.title + ' - 台灣幼兒園地圖';
             content.innerHTML = message;
         }
     }
