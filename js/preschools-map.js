@@ -17,6 +17,7 @@ for (var z = 0; z < 20; ++z) {
 var cityList = {};
 var filterCity = '',
     filterTown = '';
+var maxMonthlyFee = 20000;
 
 function pointStyleFunction(f) {
     var p = f.getProperties(),
@@ -25,6 +26,9 @@ function pointStyleFunction(f) {
         return null;
     }
     if (filterTown !== '' && p.town !== filterTown) {
+        return null;
+    }
+    if (parseInt(p.monthly) > maxMonthlyFee) {
         return null;
     }
     if (f === currentFeature) {
@@ -116,6 +120,12 @@ $('select#city').change(function() {
 });
 $('select#town').change(function() {
     filterTown = $(this).val();
+    vectorSource.refresh();
+});
+
+$('#monthlyFeeRange').on('input', function() {
+    maxMonthlyFee = parseInt($(this).val()) || 0;
+    $('#monthlyFeeValue').text(maxMonthlyFee);
     vectorSource.refresh();
 });
 
@@ -402,8 +412,13 @@ $.getJSON('data/collection.json', {}, function(c) {
     var vFormat = vectorSource.getFormat();
     vectorSource.addFeatures(vFormat.readFeatures(pointsFc));
 
+    var maxFee = 0;
     for (k in pointsFc.features) {
         var p = pointsFc.features[k].properties;
+        var monthlyFee = parseInt(p.monthly);
+        if (!isNaN(monthlyFee) && monthlyFee > maxFee) {
+            maxFee = monthlyFee;
+        }
         findTerms.push({
             value: p.id,
             label: p.title + ' ' + p.address
@@ -421,14 +436,15 @@ $.getJSON('data/collection.json', {}, function(c) {
     }
     $('select#city').html(cityOptions);
 
+    $('#monthlyFeeRange').attr('max', maxFee);
+    $('#monthlyFeeRange').val(maxFee);
+    $('#monthlyFeeValue').text(maxFee);
+    maxMonthlyFee = maxFee;
+
     routie(':pointId', showPoint);
     routie('pos/:lng/:lat', showPos);
 
     $('#findPoint').autocomplete({
-        focus: function(event, ui) {
-            $(".ui-helper-hidden-accessible").hide();
-            event.preventDefault();
-        },
         source: findTerms,
         select: function(event, ui) {
             var targetHash = '#' + ui.item.value;
