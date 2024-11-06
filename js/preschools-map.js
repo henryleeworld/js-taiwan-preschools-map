@@ -19,6 +19,9 @@ var filterCity = '',
     filterTown = '';
 var maxMonthlyFee = 20000;
 
+var punishmentData = {};
+var punishmentTerms = [];
+
 function pointStyleFunction(f) {
     var p = f.getProperties(),
         color, stroke, radius, fPoints = 3;
@@ -457,4 +460,26 @@ $.getJSON('data/collection.json', {}, function(c) {
 var vehicles = {};
 $.getJSON('data/vehicles.json', {}, function(c) {
     vehicles = c;
+});
+
+$.getJSON('data/punish_all.json', {}, function(data) {
+    punishmentData = data;
+    for (let key in data) {
+        for (let punishment of data[key]) {
+            punishmentTerms.push({
+                value: punishment.id,
+                label: punishment.date + key + ' - ' + punishment.punishment + '(' + punishment.law + ')'
+            });
+        }
+    }
+
+    $('#findPunish').autocomplete({
+        source: punishmentTerms,
+        select: function(event, ui) {
+            var targetHash = '#' + ui.item.value;
+            if (window.location.hash !== targetHash) {
+                window.location.hash = targetHash;
+            }
+        }
+    });
 });
