@@ -424,7 +424,7 @@ $.getJSON('data/collection.json', {}, function(c) {
         }
         findTerms.push({
             value: p.id,
-            label: p.title + ' ' + p.address
+            label: p.title + '(' + p.owner + ') ' + p.address
         });
         if (!cityList[p.city]) {
             cityList[p.city] = {};
