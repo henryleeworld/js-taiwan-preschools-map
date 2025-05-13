@@ -84,15 +84,19 @@ function pointStyleFunction(f) {
                 color: color
             }),
             stroke: stroke
-        }),
-        text: new ol.style.Text({
+        })
+    });
+
+    if (map.getView().getZoom() >= 15) {
+        pointStyle.setText(new ol.style.Text({
             font: '14px "Open Sans", "Arial Unicode MS", "sans-serif"',
             fill: new ol.style.Fill({
                 color: 'rgba(0,0,255,0.7)'
-            })
-        })
-    });
-    pointStyle.getText().setText('$' + p.monthly.toString() + '/月');
+            }),
+            text: '$' + p.monthly.toString() + '/月'
+        }));
+    }
+
     return pointStyle;
 }
 var sidebarTitle = document.getElementById('sidebarTitle');
