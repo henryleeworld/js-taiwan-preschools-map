@@ -20,18 +20,6 @@ body,
     z-index: 9999;
 }
 
-.sidebar-pane {
-    background-color: #f8f9fa;
-}
-
-#settings .form-label {
-    font-weight: bold;
-}
-
-#monthlyFeeValue {
-    min-width: 60px;
-    text-align: center;
-}
 
 .map-legend {
     position: fixed;
@@ -119,4 +107,323 @@ body,
     .legend-content {
         gap: 8px;
     }
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    display: none;
+}
+
+.popup-connector {
+    position: absolute;
+    background: #007bff;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 8px;
+    max-width: 350px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    pointer-events: auto;
+    border: 2px solid #007bff;
+}
+
+.popup-content::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: #007bff;
+    left: -22px;
+    top: 20px;
+}
+
+.popup-content::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-right-color: white;
+    left: -16px;
+    top: 22px;
+}
+
+.popup-content.arrow-right::before {
+    border-right-color: transparent !important;
+    border-left-color: #007bff !important;
+    left: auto !important;
+    right: -22px !important;
+}
+
+.popup-content.arrow-right::after {
+    border-right-color: transparent !important;
+    border-left-color: white !important;
+    left: auto !important;
+    right: -16px !important;
+}
+
+.popup-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.popup-body {
+    padding: 20px;
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.popup-close:hover {
+    color: #000;
+}
+
+.popup-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    padding-right: 40px;
+}
+
+.detail-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.detail-button:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .popup-content {
+        max-width: 95%;
+        max-height: 95%;
+        margin: 10px;
+    }
+
+    .popup-header,
+    .popup-body {
+        padding: 15px;
+    }
+}
+
+.filter-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-button:hover {
+    background: #0056b3;
+}
+
+.filter-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-content {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.filter-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.filter-body {
+    padding: 20px;
+}
+
+.filter-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.filter-close:hover {
+    color: #000;
+}
+
+.filter-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    padding-right: 40px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h5 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.filter-section select,
+.filter-section input[type="text"],
+.filter-section input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.fee-range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fee-range-container input[type="range"] {
+    flex: 1;
+}
+
+.fee-value {
+    background: #007bff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.geolocation-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.geolocation-btn:hover {
+    background: #218838;
+}
+
+.ui-autocomplete {
+    z-index: 10002 !important;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    color: #333 !important;
+}
+
+.ui-menu-item {
+    padding: 0 !important;
+    background: white !important;
+}
+
+.ui-menu-item-wrapper {
+    padding: 8px 12px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    cursor: pointer !important;
+    background: white !important;
+    color: #333 !important;
+    text-decoration: none !important;
+}
+
+.ui-menu-item-wrapper:hover {
+    background-color: #f8f9fa !important;
+    color: #333 !important;
+}
+
+.ui-state-active,
+.ui-menu-item-wrapper.ui-state-active {
+    background-color: #007bff !important;
+    color: white !important;
+    border-color: #007bff !important;
+}
+
+.ui-menu-item a {
+    color: #333 !important;
+    text-decoration: none !important;
+}
+
+.ui-menu-item a:hover {
+    color: #333 !important;
+}
+
+.ui-state-active a {
+    color: white !important;
 }
