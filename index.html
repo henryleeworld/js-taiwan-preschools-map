@@ -10,7 +10,7 @@
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.6.5/ol.css" integrity="sha512-D2c/nmSVlwoZk29SLwJK8GkLyCyPuNbZ/vZQL/lNzw+o+yXzsbnJt7lK/iCfdBmgyLRDi0qx27gpE8Zb1C6I7g==" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="css/preschools-map.css" type="text/css" />
         <title>台灣幼兒園地圖</title>
     </head>
@@ -76,8 +76,10 @@
                         <h5>過濾資料</h5>
                         <label for="city">縣市</label>
                         <select id="city" class="form-select"></select>
+
                         <label for="town">鄉鎮市區</label>
                         <select id="town" class="form-select"></select>
+
                         <label for="monthlyFeeRange">每月收費上限</label>
                         <div class="fee-range-container">
                             <input type="range" id="monthlyFeeRange" min="0" max="20000" step="100" value="20000" />
@@ -88,7 +90,6 @@
                         <h5>搜尋</h5>
                         <label for="findPoint">名稱、負責人或住址</label>
                         <input type="text" id="findPoint" name="findPoint" placeholder="輸入幼兒園名稱、負責人或地址" />
-
                         <label for="findPunish">搜尋裁罰記錄</label>
                         <input type="text" id="findPunish" name="findPunish" placeholder="輸入裁罰內容" />
                     </div>
