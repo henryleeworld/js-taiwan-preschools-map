@@ -11,5 +11,5 @@ $ git clone
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/purpPY0.png)
+![](https://i.imgur.com/AHCiO6F.png)
 > 每年五月抽公幼籤，家長搶破頭讓小朋友進公幼的新聞搶盡新聞版面。但事實上，台灣學齡前兒童就讀幼兒園的比率，卻遠低於日韓等先進國家
