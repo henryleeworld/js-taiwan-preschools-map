@@ -13731,7 +13731,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "新北府教幼字第1140885432新店0017之4號",
+                "reg_no": "新北府教幼字第1151499839新店0017之5號",
                 "reg_docno": "八六北府教三字第352916號",
                 "reg_date": "1997\/09\/17",
                 "title": "新北市新店區新店國民小學附設幼兒園",
@@ -17588,9 +17588,9 @@
                 "town": "中正區",
                 "type": "私立",
                 "address": "[100]北平西路3號3樓",
-                "floor": "3樓",
-                "size": "460.67平方公尺",
-                "size_in": "460.67平方公尺",
+                "floor": "",
+                "size": "",
+                "size_in": "",
                 "size_out": "",
                 "tel": "(02)23141477",
                 "url": "評鑑情形：",
@@ -28790,6 +28790,43 @@
         {
             "type": "Feature",
             "properties": {
+                "reg_no": "新北府教幼字第1140885432土城0033之2號",
+                "reg_docno": "八六北府社四字第86127121號",
+                "reg_date": "1997\/04\/09",
+                "title": "新北市私立承硯幼兒園",
+                "owner": "張進偉",
+                "city": "新北市",
+                "town": "土城區",
+                "type": "私立",
+                "address": "[236]學府路1段98巷32號、32-1號1樓、2樓、3樓",
+                "floor": "1.2.3樓",
+                "size": "1,425平方公尺",
+                "size_in": "397平方公尺",
+                "size_out": "1,028平方公尺",
+                "tel": "(02)22628181",
+                "url": "",
+                "count_approved": "349",
+                "shuttle": "\t\t",
+                "pre_public": "無",
+                "is_free5": "",
+                "is_after": "無",
+                "penalty": "有",
+                "has_slip": "no",
+                "id": "1911c4ed-f344-4d30-a410-ef8ae16ce330",
+                "monthly": 2000,
+                "is_active": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.455154,
+                    24.988814
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
                 "reg_no": "中市教幼字第1110042751號",
                 "reg_docno": "府教國字第176449號",
                 "reg_date": "1997\/12\/23",
@@ -32358,7 +32395,7 @@
                 "tel": "(06)3026105",
                 "url": "",
                 "count_approved": "360",
-                "shuttle": "\t\t",
+                "shuttle": "",
                 "pre_public": "無",
                 "is_free5": "",
                 "is_after": "無",
@@ -36338,7 +36375,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第232-6號",
+                "reg_no": "北市幼兒園證字第232-7號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "1970\/01\/01",
                 "title": "臺北市中山區中正國民小學附設幼兒園",
@@ -56401,10 +56438,10 @@
                 "town": "鹿港鎮",
                 "type": "私立",
                 "address": "[505]文成街52號",
-                "floor": "1樓、2樓、3樓",
-                "size": "2,023.15平方公尺",
-                "size_in": "1,026.13平方公尺",
-                "size_out": "997.02平方公尺",
+                "floor": "",
+                "size": "",
+                "size_in": "",
+                "size_out": "",
                 "tel": "(04)7787247",
                 "url": "http:\/\/tianjen.topschool.com.tw\/",
                 "count_approved": "173",
@@ -59278,7 +59315,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "新北府教幼字第1111673680號",
+                "reg_no": "新北府教幼字第114088543烏來0002之5號",
                 "reg_docno": "七四北教幼字第0970938494號",
                 "reg_date": "1985\/12\/27",
                 "title": "新北市立烏來國民中小學附設幼兒園",
@@ -59293,7 +59330,7 @@
                 "size_out": "575平方公尺",
                 "tel": "(02)26616482#60",
                 "url": "https:\/\/www.facebook.com\/Ulay.xo",
-                "count_approved": "60",
+                "count_approved": "45",
                 "shuttle": "\t\t",
                 "pre_public": "無",
                 "is_free5": "",
@@ -63416,6 +63453,43 @@
                 "coordinates": [
                     120.833299,
                     24.250943
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "reg_no": "府教幼字第1150193128號",
+                "reg_docno": "府教幼字第1150193128號",
+                "reg_date": "2026\/08\/01",
+                "title": "南投縣集集鎮永昌國民小學附設幼兒園",
+                "owner": "陳璿文",
+                "city": "南投縣",
+                "town": "集集鎮",
+                "type": "公立",
+                "address": "[552]東昌巷4號",
+                "floor": "",
+                "size": "",
+                "size_in": "",
+                "size_out": "",
+                "tel": "(049)2762880",
+                "url": "",
+                "count_approved": "46",
+                "shuttle": "",
+                "pre_public": "無",
+                "is_free5": "",
+                "is_after": "無",
+                "penalty": "無",
+                "has_slip": "no",
+                "id": "37201742-b8d8-457e-b403-5999eec2a00a",
+                "monthly": 2000,
+                "is_active": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.799133,
+                    23.82731
                 ]
             }
         },
@@ -77371,7 +77445,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "新北府教幼字第1131157759號",
+                "reg_no": "新北府教幼字第1140885432烏來0003之7號",
                 "reg_docno": "八四北府教三字第343046號",
                 "reg_date": "1995\/09\/18",
                 "title": "新北市立德拉楠民族實驗小學附設幼兒園",
@@ -77386,7 +77460,7 @@
                 "size_out": "2,622平方公尺",
                 "tel": "(02)26616124#501",
                 "url": "http:\/\/www.fses.tpc.edu.tw\/dyna\/menu\/index.php?account=grade0",
-                "count_approved": "30",
+                "count_approved": "45",
                 "shuttle": "\t\t",
                 "pre_public": "無",
                 "is_free5": "",
@@ -82329,11 +82403,11 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "高市教幼字第10535180600號",
+                "reg_no": "高市教幼字第11537131100號",
                 "reg_docno": "87府教學字第114937號",
                 "reg_date": "1998\/06\/15",
                 "title": "高雄市六龜區寶來國民小學附設幼兒園",
-                "owner": "陳宗逸",
+                "owner": "陳意尹",
                 "city": "高雄市",
                 "town": "六龜區",
                 "type": "公立",
@@ -107979,10 +108053,10 @@
                 "town": "三重區",
                 "type": "私立",
                 "address": "[241]新北大道一段115號1、2樓",
-                "floor": "1+2",
-                "size": "921.4平方公尺",
-                "size_in": "756.51平方公尺",
-                "size_out": "164.89平方公尺",
+                "floor": "",
+                "size": "",
+                "size_in": "",
+                "size_out": "",
                 "tel": "(02)89826868",
                 "url": "",
                 "count_approved": "170",
@@ -135794,11 +135868,11 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒證字第303-4號",
+                "reg_no": "北市幼兒園證字第303-5號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "2000\/04\/19",
                 "title": "臺北市中山區永安國民小學附設幼兒園",
-                "owner": "張文壽",
+                "owner": "黎季昊",
                 "city": "臺北市",
                 "town": "中山區",
                 "type": "公立",
@@ -138458,7 +138532,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第3163號",
+                "reg_no": "北市幼兒園證字第316-4號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "1970\/01\/01",
                 "title": "臺北市中山區大佳國民小學附設幼兒園",
@@ -142787,11 +142861,11 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "屏府教特字第1130118049號",
+                "reg_no": "屏府教特字第1150257346號",
                 "reg_docno": "屏府教國字第83783號",
                 "reg_date": "1996\/05\/30",
                 "title": "屏東縣高樹鄉高樹國民小學附設幼兒園",
-                "owner": "陳誼璟",
+                "owner": "鄒慶宗",
                 "city": "屏東縣",
                 "town": "高樹鄉",
                 "type": "公立",
@@ -150418,10 +150492,10 @@
                 "town": "泰山區",
                 "type": "私立",
                 "address": "[243]民生路20、22號",
-                "floor": "1樓、2樓、3樓",
-                "size": "769.47平方公尺",
-                "size_in": "456.71平方公尺",
-                "size_out": "312.76平方公尺",
+                "floor": "",
+                "size": "",
+                "size_in": "",
+                "size_out": "",
                 "tel": "(02)22976871",
                 "url": "",
                 "count_approved": "309",
@@ -151276,7 +151350,7 @@
                 "tel": "(02)26616101",
                 "url": "",
                 "count_approved": "45",
-                "shuttle": "",
+                "shuttle": "\t\t",
                 "pre_public": "無",
                 "is_free5": "",
                 "is_after": "無",
@@ -155413,10 +155487,10 @@
                 "town": "鹿港鎮",
                 "type": "私立",
                 "address": "[505]永安一路25號",
-                "floor": "1樓",
-                "size": "836.84平方公尺",
-                "size_in": "441.15平方公尺",
-                "size_out": "395.69平方公尺",
+                "floor": "",
+                "size": "",
+                "size_in": "",
+                "size_out": "",
                 "tel": "(04)7755398",
                 "url": "",
                 "count_approved": "114",
@@ -156641,7 +156715,7 @@
                 "tel": "(03)6568658",
                 "url": "http:\/\/disney-kindergarten4.woby.com.tw\/",
                 "count_approved": "174",
-                "shuttle": "\t\t",
+                "shuttle": "",
                 "pre_public": "115-115",
                 "is_free5": "",
                 "is_after": "無",
@@ -160732,11 +160806,11 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第203-3號",
+                "reg_no": "北市幼兒園證字第203-4號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "1991\/08\/01",
                 "title": "臺北市中山區中山國民小學附設幼兒園",
-                "owner": "翁明達",
+                "owner": "楊政修",
                 "city": "臺北市",
                 "town": "中山區",
                 "type": "公立",
@@ -161620,7 +161694,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第405-4號",
+                "reg_no": "北市幼兒園證字第405-5號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "1987\/08\/01",
                 "title": "臺北市中正區東門國民小學附設幼兒園",
@@ -161635,7 +161709,7 @@
                 "size_out": "",
                 "tel": "(02)23412051#36",
                 "url": "https:\/\/kid6.tmps.tp.edu.tw\/index.php",
-                "count_approved": "120",
+                "count_approved": "150",
                 "shuttle": "",
                 "pre_public": "無",
                 "is_free5": "",
@@ -172544,9 +172618,9 @@
                 "town": "新莊區",
                 "type": "私立",
                 "address": "[242]中原東路50號1~2樓",
-                "floor": "1樓、2樓",
-                "size": "165.26平方公尺",
-                "size_in": "134.91平方公尺",
+                "floor": "",
+                "size": "",
+                "size_in": "",
                 "size_out": "",
                 "tel": "(02)85212182",
                 "url": "",
@@ -175526,6 +175600,43 @@
                 "coordinates": [
                     120.286842,
                     22.785038
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "reg_no": "新北府教幼字第1151499839樹林0043之2號",
+                "reg_docno": "八九北府社兒字第89124385號",
+                "reg_date": "2000\/04\/07",
+                "title": "新北市私立芳田幼兒園",
+                "owner": "張碧娥",
+                "city": "新北市",
+                "town": "樹林區",
+                "type": "私立",
+                "address": "[238]三福街85巷2-1號,2-2號1樓",
+                "floor": "",
+                "size": "",
+                "size_in": "",
+                "size_out": "",
+                "tel": "(02)26885123",
+                "url": "",
+                "count_approved": "57",
+                "shuttle": "",
+                "pre_public": "無",
+                "is_free5": "",
+                "is_after": "無",
+                "penalty": "有",
+                "has_slip": "no",
+                "id": "9e0e1bf6-8487-4c41-acf1-b635d8b22709",
+                "monthly": 2000,
+                "is_active": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.407167,
+                    25.016047
                 ]
             }
         },
@@ -187150,7 +187261,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第302-7號",
+                "reg_no": "北市幼兒園證字第302-8號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "2005\/08\/12",
                 "title": "臺北市中山區濱江國民小學附設幼兒園",
@@ -208180,7 +208291,7 @@
                 "size_in": "961平方公尺",
                 "size_out": "816平方公尺",
                 "tel": "(03)9559668",
-                "url": "http:\/\/sesame-9559668.topschool.com.tw\/",
+                "url": "sesame-9559668.topschool.tw\/Bulletin\/News?PageIndex=1",
                 "count_approved": "240",
                 "shuttle": "\t\t",
                 "pre_public": "113-115",
@@ -208425,11 +208536,11 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "府教幼字第1080254600號",
+                "reg_no": "府教幼字第1150264589號",
                 "reg_docno": "府教特字第1010046629號",
                 "reg_date": "2012\/02\/24",
                 "title": "桃園市私立明原蒙特梭利幼兒園",
-                "owner": "魏麗卿",
+                "owner": "徐美珍",
                 "city": "桃園市",
                 "town": "平鎮區",
                 "type": "私立",
@@ -208476,7 +208587,7 @@
                 "size_in": "628平方公尺",
                 "size_out": "447平方公尺",
                 "tel": "(03)9577171",
-                "url": "http:\/\/king1.topschool.com.tw\/",
+                "url": "king1.topschool.tw\/Home\/Main",
                 "count_approved": "90",
                 "shuttle": "",
                 "pre_public": "113-115",
@@ -210090,7 +210201,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第96-2號",
+                "reg_no": "北市幼兒園證字第241-8號",
                 "reg_docno": "北市教幼字第10033346901號",
                 "reg_date": "2011\/01\/31",
                 "title": "臺北市中山區五常國民小學附設幼兒園",
@@ -228939,7 +229050,7 @@
                 "tel": "(06)2558254",
                 "url": "davinci.topschool.tw",
                 "count_approved": "203",
-                "shuttle": "\t\t",
+                "shuttle": "",
                 "pre_public": "無",
                 "is_free5": "",
                 "is_after": "無",
@@ -232136,6 +232247,43 @@
                 "coordinates": [
                     121.766728,
                     25.148867
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "reg_no": "府授教幼字第1150661432號",
+                "reg_docno": "府教特字第0920105164號",
+                "reg_date": "2003\/09\/18",
+                "title": "新竹縣私立源興彩虹幼兒園",
+                "owner": "王靜娟",
+                "city": "新竹縣",
+                "town": "新豐鄉",
+                "type": "私立",
+                "address": "[304]長春路97號",
+                "floor": "1樓、1",
+                "size": "519.6平方公尺",
+                "size_in": "277.2平方公尺",
+                "size_out": "242.4平方公尺",
+                "tel": "(03)5577098",
+                "url": "",
+                "count_approved": "60",
+                "shuttle": "",
+                "pre_public": "113-115",
+                "is_free5": "",
+                "is_after": "無",
+                "penalty": "無",
+                "has_slip": "no",
+                "id": "d061932c-a540-4b84-8e7d-63331a5acf7c",
+                "monthly": 2000,
+                "is_active": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.984724,
+                    24.899771
                 ]
             }
         },
@@ -238404,9 +238552,9 @@
                 "town": "蘆洲區",
                 "type": "私立",
                 "address": "[247]中正路377號、377號2樓、377號3樓之1",
-                "floor": "",
-                "size": "",
-                "size_in": "",
+                "floor": "1樓、2樓、3樓",
+                "size": "349.535平方公尺",
+                "size_in": "303.42平方公尺",
                 "size_out": "",
                 "tel": "(02)82852098",
                 "url": "",
@@ -243353,11 +243501,11 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第202-2號",
+                "reg_no": "北市幼兒園證字第202-3號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "1970\/01\/01",
                 "title": "臺北市中山區吉林國民小學附設幼兒園",
-                "owner": "郭瑞芬",
+                "owner": "蔡宗良",
                 "city": "臺北市",
                 "town": "中山區",
                 "type": "公立",
@@ -248126,11 +248274,11 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第341-2號",
+                "reg_no": "北市幼兒園證字第341-3號",
                 "reg_docno": "北市教三字第85242426號",
                 "reg_date": "1997\/08\/01",
                 "title": "臺北市中山區懷生國民小學附設幼兒園",
-                "owner": "黃淑茹",
+                "owner": "林麗惠",
                 "city": "臺北市",
                 "town": "中山區",
                 "type": "公立",
@@ -257612,7 +257760,7 @@
                 "size_in": "882平方公尺",
                 "size_out": "816平方公尺",
                 "tel": "(02)2909-8842#180",
-                "url": "http:\/\/nas2.tses.ntpc.edu.tw\/joomlaCMS\/",
+                "url": "https:\/\/tseskd.blogspot.com\/",
                 "count_approved": "272",
                 "shuttle": "",
                 "pre_public": "無",
@@ -266589,7 +266737,7 @@
         {
             "type": "Feature",
             "properties": {
-                "reg_no": "北市幼兒園證字第320-4號",
+                "reg_no": "北市幼兒園證字第320-5號",
                 "reg_docno": "北市教幼字第09740513900號",
                 "reg_date": "1988\/08\/01",
                 "title": "臺北市中山區大直國民小學附設幼兒園",
@@ -284136,9 +284284,9 @@
                 "town": "淡水區",
                 "type": "私立",
                 "address": "[251]自強路110號1、2樓",
-                "floor": "",
-                "size": "",
-                "size_in": "",
+                "floor": "1樓、2樓",
+                "size": "222.17平方公尺",
+                "size_in": "163.78平方公尺",
                 "size_out": "",
                 "tel": "(02)28098640",
                 "url": "",
